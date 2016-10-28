@@ -1,0 +1,86 @@
+import UIKit
+import Firebase import FirebaseDatabase //public var utf8: String.UTF8View { get }
+
+class SecondTableViewController: UITableViewController ,UIImagePickerControllerDelegate,UITextFieldDelegate {
+
+/*
+public struct UTF8View : CollectionType {
+    /// A position in a `String.UTF8View`.
+    public struct Index ...
+    public var startIndex: String.UTF8View.Index { get }
+    public var endIndex: String.UTF8View.Index { get }
+    public subscript (position: String.UTF8View.Index) -> CodeUnit { get }
+
+     public init?(_ utf8: String.UTF8View)
+  */
+
+@IBOutlet weak var signatureText: UITextField!
+@IBOutlet weak var RemarkText : UITextField!
+
+var deficiencies:[Deficiency]?
+
+var selectedDeficiency: Deficiency?
+
+var indexList:String = "0"
+var date:String = "dd/mm/yyyy"
+var region:String?
+var location:String = "Location"
+var amphor:String?
+var school:String = "school"
+var lat:String = "latitude"
+var long:String = "longtitude"
+var category:String = "category"
+var subconName:String = "xxx"
+// var percentComplete:String? var signature:String? var province:String? // var punchListGroup:String? var punchList:String? var defItem:String? var remark:String = "xxxx" var photoRef:String? // var punchListGroupLek:String? // var punchListLek:String? // var subconNameInput:String? var lookup:String? var dbversionserver:String = "1.2" var lookupresult:String? // var passingDate:String? /* var utf8String = "" transcode(UTF8.self, UTF32.self, utf8Array.generate(), { utf8String.append(UnicodeScalar($0)) }, stopOnError: true) */
+
+override func viewDidLoad() {
+
+    super.viewDidLoad()
+
+
+
+let schoolRef = FIRDatabase.database().referenceFromURL("https://pracharat-caeba.firebaseio.com/DBpracharat/")
+ //  lookup = school
+
+    let schoolSelected = "ปางมะค่าวิทยาคม KPT"
+
+let query =  schoolRef.queryOrderedByChild("lookup").queryEqualToValue("ปางมะค่าวิทยาคม KPT")
+     query.observeSingleEventOfType(.Value, withBlock:
+        { snapshot in
+         //   for child in snapshot.children {
+
+                 print(" i really want to know snapshot is \(snapshot)")
+            //         let key = snapshot.key
+            //         let itemRef = snapshot.ref
+      //      self.lookupresult = snapshot.value!["schoolSelected"] as! String
+       //    print("Time Freeze ......\(self.lookupresult)")
+
+
+
+
+                   print("from server =>\(snapshot.value!["schoolSelected"])" )
+            //          }else {
+
+            /*
+             let indexList = snapshot.value!["indexList"] as! String
+             let date = snapshot.value!["date"] as! String
+             let region = snapshot.value!["region"] as! String
+             let locationName = snapshot.value!["locationName"] as! String
+             let amphorName = snapshot.value!["amphorName"]as! String
+             let schoolName = snapshot.value!["schoolName"] as! String
+             let latitudeName = snapshot.value!["latitudeName"] as! String
+             let longtitudeName = snapshot.value!["longtitudeName"] as! String
+             let categoryName = snapshot.value!["categoryName"] as! String
+             let subconName = snapshot.value!["subconName"] as! String
+             // let percentComplete = snapshot.value!["percentComplete"] as! String
+             let signature = snapshot.value!["signature"] as! String
+             //   let punchListGroupName = snapshot.value!["punchListGroupName"] as! String
+             let punchListDefName = snapshot.value!["punchListDefName"] as! String
+             let defItem = snapshot.value!["defItem"] as! String
+             let remarkName = snapshot.value!["remarkName"] as! String
+             let photoRef = snapshot.value!["photoRef"] as! String
+             */
+            //  self.posts.insert(postStruct(indexList:indexList,date:date,region:region,locationName:locationName,amphorName:amphorName,schoolName:schoolName,latitudeName:latitudeName,longtitudeName:longtitudeName,categoryName:categoryName,subconName:subconName,signature:signature,punchListDefName: punchListDefName,defItem: defItem,remarkName:remarkName,photoRef:photoRef,itemRef:itemRef,key:key), atIndex: 0)
+            //   self.tableView.reloadData()
+
+    })
